@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div> I can guess your number in 10 tries or less </div>
+	<br>
+	<div id="txtDiv"> </div>
+	<br>
+	<button id="lowerBttn"> lower </button>
+	<span id="questionDiv"> </span>
+	<button id="higherBttn"> higher </button>
+	<div id="guessDiv"> </div>
+
+	<script>
+	// pick a number 1 - 1024
+	// var min
+	// var max
+	// var mid = Math.round((max - min)/2) + min
+
+	// if above
+	// max = max
+	// min = mid
+
+	// if below
+	// max = mid
+	// min = min
+
+	// make some variables
+	var txtId = document.getElementById("txtDiv")
+	var questionId = document.getElementById("questionDiv");
+	var lowerId = document.getElementById("lowerBttn");
+	var higherId = document.getElementById("higherBttn");
+	var guessId = document.getElementById("guessDiv");
+	
+	var min = 1;
+	var max = 1024;
+	var mid;
+	var guesses = 0;
+	
+	//on load
+	txtId.innerHTML = "Pick number between " + min + " - " + max;
+	mid = Math.floor((max - min)/2) + min;
+	questionId.innerHTML = "Is it " + mid + "?";
+
+	// do some logic
+	lowerId.onclick = function(){
+		max = mid;
+		mid = Math.floor((max - min)/2) + min;
+		questionId.innerHTML = "Is it " + mid + "?";
+		guesses++
+		guessId.innerHTML = "guesses: " + guesses;
+	};
+
+	higherId.onclick = function(){
+		min = mid;
+		mid = Math.floor((max - min)/2) + min;
+		questionId.innerHTML = "Is it " + mid + "?";
+		guesses++
+		guessId.innerHTML = "guesses: " + guesses;
+	};
+
+
+
+	</script>
+</body>
+</html>
