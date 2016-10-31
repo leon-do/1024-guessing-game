@@ -59,7 +59,7 @@
 		<div class="div1"> 2<sup>10</sup> = 1024 </div>
 		<div id="txtDiv" class="div2"> </div>
 		<div class="div3"> i can guess your number in < 10 tries </div>
-		<div id="guessDiv" class="div4"> guesses: 0</div>
+		<div id="guessDiv" class="div4"> </div>
 		<div class="div5">
 			<button id="lowerBttn"> lower </button>
 			<span id="questionDiv"> </span>
@@ -79,29 +79,36 @@
 	var min = 1;
 	var max = 1024;
 	var mid;
-	var guesses = 0;
+	var guesses = 10;
 	
 	//on load
 	txtId.innerHTML = "pick a number between " + min + " - " + max;
 	mid = Math.floor((max - min)/2) + min;
 	questionId.innerHTML = "is it " + mid + "?";
+	guessId.innerHTML = "guesses: " + guesses;
 
 	// do some logic
 	lowerId.onclick = function(){
 		max = mid;
-		mid = Math.floor((max - min)/2) + min;
-		questionId.innerHTML = mid;
-		guesses++
-		guessId.innerHTML = "guesses: " + guesses;
+		someMath();
 	};
 
 	higherId.onclick = function(){
 		min = mid;
+		someMath();
+	};
+
+	function someMath(){
 		mid = Math.floor((max - min)/2) + min;
 		questionId.innerHTML = mid;
-		guesses++
+		guesses--
 		guessId.innerHTML = "guesses: " + guesses;
-	};
+
+		if (guesses === 0){
+			lowerId.style.display = "none";
+			higherId.style.display = "none";
+		}
+	}
 
 
 
