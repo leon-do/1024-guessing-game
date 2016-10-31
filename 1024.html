@@ -2,30 +2,72 @@
 <html>
 <head>
 	<title></title>
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+	<style>
+		body{
+			margin:0;
+			font-family: 'Ubuntu Mono', monospace;
+			font-size: 20px;
+			text-align: center;
+		}
+		#container{
+			height: 100vh;
+			font-size: 5em;
+		}
+		button{
+			font-family: 'Ubuntu Mono', monospace;
+			font-size: 25px;
+			border:none;
+			background-color: #06D6A0;
+			color:white;
+		}
+		button:hover{
+			color:#FFD166;
+			cursor:pointer;
+		}
+		button:focus{
+			outline:none;
+		}
+		div{
+			height:20%;
+		}
+		.div1{
+			background-color: #EF476F;
+			color:#FFD166;
+		}
+		.div2{
+			background-color: #FFD166;
+			color:#EF476F;
+		}
+		.div3{
+			background-color: #06D6A0;
+			color: #FFD166;
+		}
+		.div4{
+			background-color: #118AB2;
+			color:#06D6A0;
+		}
+		.div5{
+			background-color: #073B4C;
+			color: white;
+		}
+
+	</style>
 </head>
 <body>
-	<div> I can guess your number in 10 tries or less </div>
-	<br>
-	<div id="txtDiv"> </div>
-	<br>
-	<button id="lowerBttn"> lower </button>
-	<span id="questionDiv"> </span>
-	<button id="higherBttn"> higher </button>
-	<div id="guessDiv"> </div>
+	<div id="container">
+		<div class="div1"> 2<sup>10</sup> = 1024 </div>
+		<div id="txtDiv" class="div2"> </div>
+		<div class="div3"> i can guess your number in < 10 tries </div>
+		<div id="guessDiv" class="div4"> guesses: 0</div>
+		<div class="div5">
+			<button id="lowerBttn"> lower </button>
+			<span id="questionDiv"> </span>
+			<button id="higherBttn"> higher </button>
+		</div>
+	</div>
 
 	<script>
-	// pick a number 1 - 1024
-	// var min
-	// var max
-	// var mid = Math.round((max - min)/2) + min
-
-	// if above
-	// max = max
-	// min = mid
-
-	// if below
-	// max = mid
-	// min = min
 
 	// make some variables
 	var txtId = document.getElementById("txtDiv")
@@ -40,15 +82,15 @@
 	var guesses = 0;
 	
 	//on load
-	txtId.innerHTML = "Pick number between " + min + " - " + max;
+	txtId.innerHTML = "pick a number between " + min + " - " + max;
 	mid = Math.floor((max - min)/2) + min;
-	questionId.innerHTML = "Is it " + mid + "?";
+	questionId.innerHTML = "is it " + mid + "?";
 
 	// do some logic
 	lowerId.onclick = function(){
 		max = mid;
 		mid = Math.floor((max - min)/2) + min;
-		questionId.innerHTML = "Is it " + mid + "?";
+		questionId.innerHTML = mid;
 		guesses++
 		guessId.innerHTML = "guesses: " + guesses;
 	};
@@ -56,7 +98,7 @@
 	higherId.onclick = function(){
 		min = mid;
 		mid = Math.floor((max - min)/2) + min;
-		questionId.innerHTML = "Is it " + mid + "?";
+		questionId.innerHTML = mid;
 		guesses++
 		guessId.innerHTML = "guesses: " + guesses;
 	};
